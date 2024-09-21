@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ارسال موقعیت مکانی</title>
+    <script>
+        function sendLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    // ساخت متن ایمیل با موقعیت مکانی
+                    var locationMessage = "عرض جغرافیایی: " + latitude + "، طول جغرافیایی: " + longitude;
+
+                    // باز کردن ایمیل کلاینت و ارسال موقعیت مکانی
+                    window.location.href = "mailto:nimole2020@gmail.com?subject=موقعیت%20کاربر&body=" + locationMessage;
+                });
+            } else {
+                alert("مرورگر شما از قابلیت مکان‌یابی پشتیبانی نمی‌کند.");
+            }
+        }
+    </script>
+</head>
+<body onload="sendLocation()">
+    <h1>در حال ارسال موقعیت مکانی شما...</h1>
+</body>
+</html>
